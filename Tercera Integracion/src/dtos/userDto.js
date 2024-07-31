@@ -1,54 +1,11 @@
-const { IsString, IsEmail, Length, IsOptional } = require('class-validator');
-
-class CreateUserDto {
-  @IsString()
-  @Length(1, 50)
-  firstname;
-
-  @IsString()
-  @Length(1, 50)
-  lastname;
-
-  @IsEmail()
-  email;
-
-  @IsString()
-  @Length(6, 100)
-  password;
-
-  @IsOptional()
-  @IsString()
-  @Length(0, 255)
-  fullname;
+class UserDto {
+  constructor(user) {
+    this.firstname = user.firstname;
+    this.lastname = user.lastname;
+    this.email = user.email;
+    this.password = user.password;
+    this.fullname = user.fullname;
+  }
 }
 
-class UpdateUserDto {
-  @IsOptional()
-  @IsString()
-  @Length(1, 50)
-  firstname;
-
-  @IsOptional()
-  @IsString()
-  @Length(1, 50)
-  lastname;
-
-  @IsOptional()
-  @IsEmail()
-  email;
-
-  @IsOptional()
-  @IsString()
-  @Length(6, 100)
-  password;
-
-  @IsOptional()
-  @IsString()
-  @Length(0, 255)
-  fullname;
-}
-
-module.exports = {
-  CreateUserDto,
-  UpdateUserDto
-};
+module.exports = UserDto;
